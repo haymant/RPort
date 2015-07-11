@@ -33,3 +33,12 @@ covRiskBudgetsPie(ewPortfolio, radius = 0.7, col = col)
 mtext(text = "Equally Weighted MV Portfolio", side = 3, line = 1.5,
       font = 2, cex = 0.7, adj = 0)
 
+f=portfolioFrontier(data=eqReturns, spec= ewSpec, constraints="LongOnly")
+frontierPlot(f)
+minvariancePoints(f)
+tangencyPoints(f)
+tangencyLines(f)
+equalWeightsPoints(f)
+twoAssetsLines(f)
+singleAssetPoints(f)
+sharpeRatioLines(f)
