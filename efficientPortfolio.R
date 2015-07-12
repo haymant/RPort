@@ -47,6 +47,15 @@ twoAssetsLines(f)
 singleAssetPoints(f)
 sharpeRatioLines(f)
 
+
+#from the efficient frontier, give a expected return
+#optimize the portfoio
+setTargetReturn(ewSpec) = 0.03
+efLong = efficientPortfolio(data=eqReturns, spec= ewSpec, constraints="LongOnly")
+weightsPie(efLong)
+mtext(text = "LongOnly Efficient Portfolio", side = 3, line = 1.5,
+      font = 2, cex = 0.7, adj = 0)
+
 #allow short now
 #otherwise, the target return might not be archivable.
 shortSpec<-ewSpec
@@ -55,3 +64,5 @@ setTargetReturn(shortSpec) = 0.2
 setSolver(shortSpec) <- "solveRshortExact"
 ef = efficientPortfolio(data=eqReturns, spec= shortSpec, constraints="LongOnly")
 weightsPie(ef)
+mtext(text = "Short Efficient Portfolio", side = 3, line = 1.5,
+      font = 2, cex = 0.7, adj = 0)
